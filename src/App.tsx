@@ -11,7 +11,7 @@ import Homepage from "./pages/Homepage";
 import Aboutus from "./pages/Aboutus";
 import Propertylistings from "./pages/Propertypage";
 import BookingForm from "./components/section/PropertySection/BookProperty";
-import Contactus from "./pages/Contactus";
+import Contactus from "./pages/ContactPage";
 import Upcoming from "./pages/Upcoming";
 
 function App() {
@@ -42,7 +42,7 @@ function Layout() {
           />
           <Route
             path="/about"
-            element={<Aboutus title="About Us" onNavigate={handleNavigate} />}
+            element={<Aboutus />}
           />
           <Route
             path="/upcoming"
@@ -60,7 +60,7 @@ function Layout() {
           />
           <Route
             path="/contact"
-            element={<Contactus title="Contact Us" onNavigate={handleNavigate} />}
+            element={<Contactus/>}
           />
         </Routes>
       </div>
