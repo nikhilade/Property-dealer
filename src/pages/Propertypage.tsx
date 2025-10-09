@@ -1,5 +1,7 @@
 import { MapPin, Home, Building2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Banner from "../components/Layout/Banner";
+import bannerImage from "../assets/HomeImages/banner-img.avif";
 
 const properties = [
   {
@@ -94,96 +96,108 @@ function PropertyPage() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen mt-14 py-16 px-6">
-      {/* --- PAGE HEADER --- */}
-      <div className="text-center mb-14">
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <Home className="w-8 h-8 text-blue-700" />
-          <h1 className="text-4xl font-bold text-slate-900 tracking-tight">
-            Explore Our Premium Properties
-          </h1>
-        </div>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          Discover handpicked properties across India — each offering modern
-          design, comfort, and luxury living experiences.
-        </p>
-      </div>
+    <>
+      <Banner
+        title="Explore Our Premium Properties"
+        subtitle="Discover handpicked properties across India — each offering modern
+            design, comfort, and luxury living experiences."
+        backgroundImage={bannerImage}
+      />
+      <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen mt-14 py-16 px-6">
+        {/* --- PAGE HEADER --- */}
 
-      {/* --- PROPERTY GRID --- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-        {properties.map((property) => (
-          <div
-            key={property.id}
-            className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
-          >
-            {/* Image Section */}
-            <div className="relative overflow-hidden">
-              <img
-                src={property.image}
-                alt={property.title}
-                className="w-full h-56 object-cover transform group-hover:scale-110 transition duration-500"
-              />
-              <span className="absolute top-3 left-3 bg-blue-700 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                {property.city}
-              </span>
-
-              {/* Overlay Buttons */}
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <button
-                  onClick={() => handleViewMore(property)}
-                  className="bg-white text-blue-700 font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-50 transition"
-                >
-                  View More
-                </button>
-                <button
-                  onClick={() => handleBook(property.id)}
-                  className="bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-800 transition"
-                >
-                  Book Now
-                </button>
-              </div>
-            </div>
-
-            {/* Details Section */}
-            <div className="p-6">
-              <h2 className="text-xl font-semibold text-slate-900 mb-2">
-                {property.title}
-              </h2>
-              <p className="text-gray-500 flex items-center gap-1 text-sm mb-2">
-                <MapPin className="w-4 h-4 text-blue-600" />
-                {property.location}
-              </p>
-              <p className="text-blue-700 font-bold text-lg mb-3">
-                {property.price}
-              </p>
-              <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                {property.description}
-              </p>
-
-              {/* Amenities Section */}
-              <div className="flex flex-wrap gap-2">
-                {property.amenities.map((amenity) => (
-                  <span
-                    key={amenity}
-                    className="text-xs bg-gray-100 text-gray-700 font-medium px-3 py-1 rounded-full"
-                  >
-                    {amenity}
-                  </span>
-                ))}
-              </div>
-            </div>
+        {/* <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Home className="w-8 h-8 text-blue-700" />
+            <h1 className="text-4xl font-bold text-slate-900 tracking-tight">
+              Explore Our Premium Properties
+            </h1>
           </div>
-        ))}
-      </div>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Discover handpicked properties across India — each offering modern
+            design, comfort, and luxury living experiences.
+          </p>
+        </div> */}
 
-      {/* --- SUBFOOTER --- */}
-      <div className="text-center mt-16 text-gray-500 text-sm">
-        <Building2 className="inline-block w-5 h-5 mr-2 text-blue-600" />
-        <span>
-          Find your dream home with <span className="font-semibold text-blue-700">INFOLINK Properties</span>
-        </span>
+        {/* --- PROPERTY GRID --- */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+          {properties.map((property) => (
+            <div
+              key={property.id}
+              className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
+            >
+              {/* Image Section */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={property.image}
+                  alt={property.title}
+                  className="w-full h-56 object-cover transform group-hover:scale-110 transition duration-500"
+                />
+                <span className="absolute top-3 left-3 bg-blue-700 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                  {property.city}
+                </span>
+
+                {/* Overlay Buttons */}
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <button
+                    onClick={() => handleViewMore(property)}
+                    className="bg-white text-blue-700 font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-50 transition"
+                  >
+                    View More
+                  </button>
+                  <button
+                    onClick={() => handleBook(property.id)}
+                    className="bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-blue-800 transition"
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+
+              {/* Details Section */}
+              <div className="p-6">
+                <h2 className="text-xl font-semibold text-slate-900 mb-2">
+                  {property.title}
+                </h2>
+                <p className="text-gray-500 flex items-center gap-1 text-sm mb-2">
+                  <MapPin className="w-4 h-4 text-blue-600" />
+                  {property.location}
+                </p>
+                <p className="text-blue-700 font-bold text-lg mb-3">
+                  {property.price}
+                </p>
+                <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                  {property.description}
+                </p>
+
+                {/* Amenities Section */}
+                <div className="flex flex-wrap gap-2">
+                  {property.amenities.map((amenity) => (
+                    <span
+                      key={amenity}
+                      className="text-xs bg-gray-100 text-gray-700 font-medium px-3 py-1 rounded-full"
+                    >
+                      {amenity}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* --- SUBFOOTER --- */}
+        <div className="text-center mt-16 text-gray-500 text-sm">
+          <Building2 className="inline-block w-5 h-5 mr-2 text-blue-600" />
+          <span>
+            Find your dream home with{" "}
+            <span className="font-semibold text-blue-700">
+              PROPERTY DEALER
+            </span>
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

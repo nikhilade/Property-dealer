@@ -1,4 +1,6 @@
 import React from "react";
+import Banner from "../components/Layout/Banner";
+import bannerImage from "../assets/HomeImages/banner-img.avif";
 
 const Upcoming: React.FC = () => {
   const properties = [
@@ -46,10 +48,13 @@ const Upcoming: React.FC = () => {
   ];
 
   return (
+    <>
+      <Banner
+        title="Upcoming Properties"
+        subtitle="Explore our exclusive upcoming residential projects across India."
+        backgroundImage={bannerImage}
+      />
     <div className="p-8 mt-12">
-      <h2 className="text-3xl font-bold mb-6 text-center text-slate-900">
-        Upcoming Properties
-      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {properties.map((property) => (
@@ -75,6 +80,7 @@ const Upcoming: React.FC = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

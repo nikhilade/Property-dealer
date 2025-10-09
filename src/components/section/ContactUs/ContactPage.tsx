@@ -30,11 +30,11 @@ const ContactPage = () => {
   return (
     <section className="bg-gray-100">
       {/* Banner Heading */}
-      <div className="w-full h-48 sm:h-64 md:h-96 relative bg-gray-800 flex items-center justify-center">
+      {/* <div className="w-full h-48 sm:h-64 md:h-96 relative bg-gray-800 flex items-center justify-center">
         <h1 className="text-2xl sm:text-4xl md:text-6xl text-white font-bold text-center px-2">
           Contact <span className="text-[#ff6B00]">Us</span>
         </h1>
-      </div>
+      </div> */}
 
       {/* Contact Details and Form */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">

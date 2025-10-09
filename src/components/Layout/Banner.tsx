@@ -22,7 +22,7 @@ function Banner({
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
 
-      <div className="relative flex items-center justify-center min-h-[90vh] px-4 sm:px-6 lg:px-8">
+      <div className="relative flex items-center justify-center min-h-[80vh] px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             {title}
