@@ -1,21 +1,29 @@
 import AboutSection from "../components/section/HomeSection/AboutSection";
-import HomeBanner from "../components/section/HomeSection/HomeBanner";
+import bannerImage from "../assets/HomeImages/banner-img.avif"
 import PropertySection from "../components/section/HomeSection/PropertySection";
 import WhyUsSection from "../components/section/HomeSection/WhyUsSection";
+import Banner from "../components/Layout/Banner";
+import Testimonials from "../components/section/HomeSection/Testimonials";
 
-
-interface HomeProps{
-  onNavigate:(page: string) => void;
-  title:string;
+interface HomeProps {
+  onNavigate: (page: string) => void;
+  title: string;
 }
 
-function Homepage({ onNavigate }:HomeProps) {
+function Homepage({ onNavigate }: HomeProps) {
   return (
-    <div className="pt-16">
-      <HomeBanner onNavigate={onNavigate}/>
-      <PropertySection/>
-      <WhyUsSection/>
-      <AboutSection onNavigate={onNavigate}/>
+    <div className="">
+      <Banner
+        title="Find Your Dream Property Today"
+        subtitle="Discover exceptional residential and commercial properties with expert guidance every step of the way."
+        buttonText="Browse Properties"
+        backgroundImage={bannerImage}
+        onButtonClick={() => onNavigate("properties")}
+      />
+      <PropertySection />
+      <WhyUsSection />
+      <AboutSection onNavigate={onNavigate} />
+      <Testimonials/>
     </div>
   );
 }

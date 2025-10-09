@@ -13,6 +13,7 @@ import Propertylistings from "./pages/Propertypage";
 import BookingForm from "./components/section/PropertySection/BookProperty";
 import Contactus from "./pages/ContactPage";
 import Upcoming from "./pages/Upcoming";
+import PropertyDetail from "./components/section/PropertySection/PropertyDetail";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function Layout() {
             path="/book-property/:id"
             element={<BookingForm />}
           />
+          <Route path="/property/:id" element={<PropertyDetail />} />
           <Route
             path="/contact"
             element={<Contactus/>}

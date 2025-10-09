@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const BookingForm: React.FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -20,8 +21,7 @@ const BookingForm: React.FC = () => {
   ) => {
     const { name, value, type } = e.target;
     if (type === "file") {
-      const target = e.target as HTMLInputElement;
-      const file = target.files?.[0] || null;
+      const file = (e.target as HTMLInputElement).files?.[0] || null;
       setFormData((prev) => ({ ...prev, [name]: file }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -34,22 +34,27 @@ const BookingForm: React.FC = () => {
     alert("Booking submitted successfully!");
   };
 
+  const handleBack = () => {
+  navigate("/property"); // 👈 or "/properties" — use the exact one in your Routes
+};
+
   return (
     <div
-      className="flex items-center justify-center bg-cover bg-center py-16"
+      className="min-h-screen bg-cover bg-center flex items-center justify-center py-30 px-4"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1600&q=80')",
       }}
     >
-      <div className="bg-white/90 backdrop-blur-lg shadow-lg rounded-xl w-full max-w-md p-6">
-        <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">
-          Booking Form
+      <div className="bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl w-full max-w-6xl p-10">
+        <h1 className="text-3xl font-bold text-center text-blue-700 mb-10">
+          Property Booking Form
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
+          {/* Customer Name */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">
               Customer Name
             </label>
             <input
@@ -58,37 +63,39 @@ const BookingForm: React.FC = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="text-sm font-medium text-gray-700">Phone</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium text-gray-700">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-            </div>
+          {/* Phone */}
+          <div>
+            <label className="text-sm font-semibold text-gray-700">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
           </div>
 
+          {/* Email */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          {/* Project Name */}
+          <div>
+            <label className="text-sm font-semibold text-gray-700">
               Project / Property ID
             </label>
             <input
@@ -97,12 +104,13 @@ const BookingForm: React.FC = () => {
               value={formData.projectName}
               onChange={handleChange}
               required
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
+          {/* Unit Number */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">
               Unit Number
             </label>
             <input
@@ -111,12 +119,13 @@ const BookingForm: React.FC = () => {
               value={formData.unitNumber}
               onChange={handleChange}
               required
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
+          {/* Payment Plan */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">
               Payment Plan
             </label>
             <select
@@ -124,7 +133,7 @@ const BookingForm: React.FC = () => {
               value={formData.paymentPlan}
               onChange={handleChange}
               required
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             >
               <option value="">Select Plan</option>
               <option value="Down Payment">Down Payment</option>
@@ -133,8 +142,9 @@ const BookingForm: React.FC = () => {
             </select>
           </div>
 
+          {/* Amount Paid */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">
               Amount Paid
             </label>
             <input
@@ -143,12 +153,13 @@ const BookingForm: React.FC = () => {
               value={formData.amountPaid}
               onChange={handleChange}
               required
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
+          {/* Payment Mode */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">
               Mode of Payment
             </label>
             <select
@@ -156,7 +167,7 @@ const BookingForm: React.FC = () => {
               value={formData.paymentMode}
               onChange={handleChange}
               required
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
             >
               <option value="">Select Mode</option>
               <option value="UPI">UPI</option>
@@ -166,8 +177,9 @@ const BookingForm: React.FC = () => {
             </select>
           </div>
 
+          {/* Upload Receipt */}
           <div>
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-semibold text-gray-700">
               Upload Receipt
             </label>
             <input
@@ -175,16 +187,27 @@ const BookingForm: React.FC = () => {
               name="receipt"
               accept="image/*,.pdf"
               onChange={handleChange}
-              className="mt-1 w-full border rounded-md px-3 py-2 text-sm cursor-pointer focus:ring-2 focus:ring-blue-500 outline-none"
+              className="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm cursor-pointer focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md text-sm hover:bg-blue-700 transition"
-          >
-            Submit Booking
-          </button>
+          {/* Back & Submit Buttons */}
+          <div className="col-span-2 flex flex-col sm:flex-row justify-between gap-4 mt-6">
+            <button
+              type="button"
+              onClick={handleBack}
+              className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-800 transition"
+            >
+              ← Back
+            </button>
+
+            <button
+              type="submit"
+              className="bg-blue-600 text-white font-semibold py-2 px-10 rounded-lg hover:bg-blue-700 transition"
+            >
+              Submit Booking
+            </button>
+          </div>
         </form>
       </div>
     </div>

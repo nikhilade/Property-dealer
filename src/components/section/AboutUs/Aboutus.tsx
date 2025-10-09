@@ -28,7 +28,7 @@ const AboutUs: React.FC = () => {
   }, []);
 
   return (
-    <div className="pt-24 p-8 text-gray-700 max-w-6xl mx-auto">
+    <div className="pt-24 p-8 text-gray-700 max-w-7xl mx-auto">
       {/* Header */}
       <h1 className="font-bold text-4xl mb-12 text-center text-gray-800">
         About Us

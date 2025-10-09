@@ -27,7 +27,7 @@ const MissionVision: React.FC = () => {
   }, []);
 
   return (
-    <div className="mt-8 px-4"> {/* mt-16 -> mt-8, section upar shift */}
+    <div className=" mt-8 px-4"> {/* mt-16 -> mt-8, section upar shift */}
       <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">
         Our Mission & Vision
       </h2>
