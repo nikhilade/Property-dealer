@@ -4,6 +4,7 @@ import PropertySection from "../components/section/HomeSection/PropertySection";
 import WhyUsSection from "../components/section/HomeSection/WhyUsSection";
 import Banner from "../components/Layout/Banner";
 import Testimonials from "../components/section/HomeSection/Testimonials";
+import UpcomingProjects from "../components/section/HomeSection/UpcomingProjects";
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -22,6 +23,7 @@ function Homepage({ onNavigate }: HomeProps) {
       />
       <PropertySection />
       <WhyUsSection />
+      <UpcomingProjects/>
       <AboutSection onNavigate={onNavigate} />
       <Testimonials/>
     </div>

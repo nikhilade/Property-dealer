@@ -140,7 +140,7 @@ const ContactPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <select
+              {/* <select
                 className="border border-gray-300 p-3 rounded w-full text-sm sm:text-base"
                 value={property}
                 onChange={(e) => setProperty(e.target.value)}
@@ -150,8 +150,8 @@ const ContactPage = () => {
                 {propertyList.map((p, idx) => (
                   <option key={idx} value={p}>{p}</option>
                 ))}
-              </select>
-              <select
+              </select> */}
+              {/* <select
                 className="border border-gray-300 p-3 rounded w-full text-sm sm:text-base"
                 value={contactTime}
                 onChange={(e) => setContactTime(e.target.value)}
@@ -161,7 +161,7 @@ const ContactPage = () => {
                 <option value="Morning">Morning</option>
                 <option value="Afternoon">Afternoon</option>
                 <option value="Evening">Evening</option>
-              </select>
+              </select> */}
               <textarea
                 placeholder="Message"
                 className="border border-gray-300 p-3 rounded w-full h-24 sm:h-32 text-sm sm:text-base"
