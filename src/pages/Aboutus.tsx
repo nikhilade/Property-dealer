@@ -1,6 +1,6 @@
 import Aboutus from "../components/section/AboutUs/Aboutus";
 import MissionVision from "../components/section/AboutUs/MissionVision";
-import TeamMembers from "../components/section/AboutUs/TeamMembers";
+import Testimonials from "../components/section/HomeSection/Testimonials";
 import Banner from "../components/Layout/Banner";
 import bannerImage from "../assets/HomeImages/banner-img.avif";
 
@@ -14,7 +14,7 @@ function AboutUs() {
       />
       <Aboutus />
       <MissionVision />
-      <TeamMembers />
+      <Testimonials/>
     </div>
   );
 }
